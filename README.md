@@ -1,6 +1,6 @@
 # Shelf Analyzer API
 
-This project is a simple API that analyzes a shelf layout and identifies the shape and position of different product groups.
+This project provides an API that analyzes a shelf layout and identifies the shape and position of different product groups.
 It is based on a retail use case where products are arranged on shelves and need to be analyzed automatically.
 
 ---
@@ -37,9 +37,13 @@ docker-compose up --build
 
 ---
 
+## API Endpoint
 
+`POST /`
 
-### Request
+---
+
+## Request
 
 ```json
 {
@@ -54,7 +58,7 @@ docker-compose up --build
 
 ---
 
-### Response
+## Response
 
 ```json
 {
@@ -67,6 +71,38 @@ docker-compose up --build
 
 ---
 
+## Project Structure
+
+```bash
+shelfAnalyzer/
+│
+├── shelf/                     # Core app (business logic)
+│   ├── migrations/
+│   ├── admin.py
+│   ├── apps.py
+│   ├── models.py
+│   ├── tests.py
+│   ├── urls.py
+│   └── views.py              # Shelf analysis logic
+│
+├── shelfAnalyzer/            # Project configuration
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py               # Root routing
+│   └── wsgi.py
+│
+├── Dockerfile                # Container setup
+├── docker-compose.yml        # Multi-container config
+├── manage.py                 # Django entry point
+├── requirements.txt          # Dependencies
+├── .dockerignore
+├── .gitignore
+└── README.md
+```
+
+---
+
 ## Implementation Guide
 
 The solution follows a straightforward approach:
@@ -75,8 +111,8 @@ The solution follows a straightforward approach:
 * For each brand, a bounding box is calculated using min and max row/column
 * Height and width of the box are used to determine the shape:
 
-  * if all cells fill the box → rectangle or square
-  * otherwise → polygon
+  * If all cells fill the box → rectangle or square
+  * Otherwise → polygon
 * Based on the position of the box in the grid, the location is assigned (top, middle, bottom, left, right)
 
 ---
@@ -154,11 +190,17 @@ You can test the API using:
 ```bash
 curl -X POST http://localhost:8000/ \
 -H "Content-Type: application/json" \
--d '{ "layout": [...] }'
+-d '{
+  "layout": [
+    ["G","G","M","M"],
+    ["G","G","M","M"],
+    ["B","B","N","N"],
+    ["B","B","N","N"]
+  ]
+}'
 ```
 
 ---
-
 
 ## Author
 
