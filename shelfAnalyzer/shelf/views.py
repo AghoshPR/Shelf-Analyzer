@@ -10,7 +10,7 @@ class ShelfAnalysisView(APIView):
         shelf_layout = request.data.get("layout")
 
         if not shelf_layout:
-            return Response({"error:layout is required"}, status=400)
+            return Response({"error": "layout is required"}, status=400)
 
         brand_cells_map = self.group_cells_by_brand(shelf_layout)
 
