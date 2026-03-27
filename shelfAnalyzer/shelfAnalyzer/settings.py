@@ -1,18 +1,11 @@
 from decouple import config
-
 from pathlib import Path
-
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-
-
 SECRET_KEY = config('SECRET_KEY')
 
-
 DEBUG = True
-
 
 ALLOWED_HOSTS = ['*']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

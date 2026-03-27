@@ -4,6 +4,6 @@ from .views import ShelfAnalysisView
 
 
 urlpatterns = [
-    
-    path('shelf/analyze/', ShelfAnalysisView.as_view(), name='shelf-analyze'),
+
+    path('', ShelfAnalysisView.as_view(), name='shelf-analyze'),
 ]
