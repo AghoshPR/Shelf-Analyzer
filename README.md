@@ -25,7 +25,7 @@ python manage.py runserver
 ```
 
 Open:
-http://localhost:8000/api/shelf/analyze/
+http://localhost:8000/
 
 ---
 
@@ -37,9 +37,7 @@ docker-compose up --build
 
 ---
 
-## API Endpoint
 
-### POST `/api/shelf/analyze/`
 
 ### Request
 
@@ -154,7 +152,7 @@ You can test the API using:
 * curl:
 
 ```bash
-curl -X POST http://localhost:8000/api/shelf/analyze/ \
+curl -X POST http://localhost:8000/ \
 -H "Content-Type: application/json" \
 -d '{ "layout": [...] }'
 ```
